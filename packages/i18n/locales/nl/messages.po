@@ -8735,6 +8735,9 @@ msgstr "Linear is verbonden, maar de eerste synchronisatie kon niet starten. Ver
 msgid "Linear integration"
 msgstr "Linear-integratie"
 
+msgid "Linear sync requires the Pro plan."
+msgstr "Linear-synchronisatie vereist het Pro-abonnement."
+
 #. placeholder {0}: m.startLine
 #. placeholder {0}: metadata.startLine
 #. placeholder {1}: m.endLine
@@ -16058,6 +16061,12 @@ msgstr "Dit duurt langer dan gewoonlijk. De werkruimte is mogelijk al klaar — 
 msgid "This issue link is invalid."
 msgstr "Deze link naar een issue is ongeldig."
 
+msgid "This Linear workspace is already connected by {owner}. Ask them to disconnect first."
+msgstr "Deze Linear-werkruimte is al gekoppeld door {owner}. Vraag hen om eerst los te koppelen."
+
+msgid "This Linear workspace is already connected by another Superset organization."
+msgstr "Deze Linear-werkruimte is al gekoppeld door een andere Superset-organisatie."
+
 msgid "This looks like a binary file. Opening it as text may show garbled output or freeze the editor for large files."
 msgstr "Dit lijkt een binair bestand. Als tekst openen kan onleesbare uitvoer geven of de editor bij grote bestanden laten vastlopen."
 
@@ -16889,6 +16898,12 @@ msgstr "Upgraden naar {0}"
 
 msgid "Upgrade to Pro"
 msgstr "Upgraden naar Pro"
+
+msgid "Upgrade to Pro to connect GitHub"
+msgstr "Upgraden naar Pro om GitHub te verbinden"
+
+msgid "Upgrade to Pro to connect Linear"
+msgstr "Upgraden naar Pro om Linear te verbinden"
 
 msgid "Upload files"
 msgstr "Bestanden uploaden"

@@ -8735,6 +8735,9 @@ msgstr "Đã kết nối Linear, nhưng lần đồng bộ đầu tiên không k
 msgid "Linear integration"
 msgstr "Tích hợp Linear"
 
+msgid "Linear sync requires the Pro plan."
+msgstr "Đồng bộ Linear yêu cầu gói Pro."
+
 #. placeholder {0}: m.startLine
 #. placeholder {0}: metadata.startLine
 #. placeholder {1}: m.endLine
@@ -16058,6 +16061,12 @@ msgstr "Việc này lâu hơn bình thường. Workspace có thể đã sẵn s�
 msgid "This issue link is invalid."
 msgstr "Liên kết issue này không hợp lệ."
 
+msgid "This Linear workspace is already connected by {owner}. Ask them to disconnect first."
+msgstr "Workspace Linear này đã được {owner} kết nối. Hãy nhờ họ ngắt kết nối trước."
+
+msgid "This Linear workspace is already connected by another Superset organization."
+msgstr "Workspace Linear này đã được một tổ chức Superset khác kết nối."
+
 msgid "This looks like a binary file. Opening it as text may show garbled output or freeze the editor for large files."
 msgstr "Đây có vẻ là tệp nhị phân. Mở dưới dạng văn bản có thể hiện ra ký tự lỗi hoặc làm treo trình soạn thảo với tệp lớn."
 
@@ -16889,6 +16898,12 @@ msgstr "Nâng cấp lên {0}"
 
 msgid "Upgrade to Pro"
 msgstr "Nâng cấp lên Pro"
+
+msgid "Upgrade to Pro to connect GitHub"
+msgstr "Nâng cấp lên Pro để kết nối GitHub"
+
+msgid "Upgrade to Pro to connect Linear"
+msgstr "Nâng cấp lên Pro để kết nối Linear"
 
 msgid "Upload files"
 msgstr "Tải tệp lên"

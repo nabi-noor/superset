@@ -8735,6 +8735,9 @@ msgstr "Linear bağlandı, ancak ilk eşitleme başlatılamadı. Lütfen yeniden
 msgid "Linear integration"
 msgstr "Linear entegrasyonu"
 
+msgid "Linear sync requires the Pro plan."
+msgstr "Linear eşitlemesi Pro planı gerektirir."
+
 #. placeholder {0}: m.startLine
 #. placeholder {0}: metadata.startLine
 #. placeholder {1}: m.endLine
@@ -16058,6 +16061,12 @@ msgstr "Bu normalden uzun sürüyor. Çalışma alanı zaten hazır olabilir —
 msgid "This issue link is invalid."
 msgstr "Bu issue bağlantısı geçersiz."
 
+msgid "This Linear workspace is already connected by {owner}. Ask them to disconnect first."
+msgstr "Bu Linear çalışma alanı {owner} tarafından zaten bağlanmış. Önce bağlantıyı kesmesini isteyin."
+
+msgid "This Linear workspace is already connected by another Superset organization."
+msgstr "Bu Linear çalışma alanı başka bir Superset kuruluşu tarafından zaten bağlanmış."
+
 msgid "This looks like a binary file. Opening it as text may show garbled output or freeze the editor for large files."
 msgstr "Bu bir ikili dosyaya benziyor. Metin olarak açmak bozuk çıktı gösterebilir veya büyük dosyalarda düzenleyiciyi dondurabilir."
 
@@ -16889,6 +16898,12 @@ msgstr "{0} planına yükselt"
 
 msgid "Upgrade to Pro"
 msgstr "Pro'ya yükselt"
+
+msgid "Upgrade to Pro to connect GitHub"
+msgstr "GitHub'ı bağlamak için Pro'ya yükselt"
+
+msgid "Upgrade to Pro to connect Linear"
+msgstr "Linear'ı bağlamak için Pro'ya yükselt"
 
 msgid "Upload files"
 msgstr "Dosya yükle"

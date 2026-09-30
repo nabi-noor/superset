@@ -15,6 +15,7 @@ import {
 import { Button } from "@superset/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AlertTriangle, Unplug } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { env } from "@/env";
 import { useTRPC } from "@/trpc/react";
@@ -23,12 +24,14 @@ interface ConnectionControlsProps {
 	organizationId: string;
 	isConnected: boolean;
 	needsReconnect?: boolean;
+	syncAllowed: boolean;
 }
 
 export function ConnectionControls({
 	organizationId,
 	isConnected,
 	needsReconnect = false,
+	syncAllowed,
 }: ConnectionControlsProps) {
 	const trpc = useTRPC();
 	const router = useRouter();
@@ -143,6 +146,16 @@ export function ConnectionControls({
 					</AlertDialogFooter>
 				</AlertDialogContent>
 			</AlertDialog>
+		);
+	}
+
+	if (!syncAllowed) {
+		return (
+			<Button asChild>
+				<Link href="/settings/billing">
+					<Trans>Upgrade to Pro to connect Linear</Trans>
+				</Link>
+			</Button>
 		);
 	}
 

@@ -60,6 +60,11 @@ export default async function GitHubIntegrationPage() {
 				message: "Something went wrong. Please try again.",
 			}),
 		),
+		plan_required: i18n._(
+			msg({
+				message: "GitHub sync requires the Pro plan.",
+			}),
+		),
 	};
 	const CALLBACK_WARNINGS = {
 		sync_queue_failed: i18n._(
@@ -95,9 +100,12 @@ export default async function GitHubIntegrationPage() {
 		);
 	}
 
-	const installation = await trpc.integration.github.getInstallation.query({
-		organizationId: organization.id,
-	});
+	const [installation, syncAllowed] = await Promise.all([
+		trpc.integration.github.getInstallation.query({
+			organizationId: organization.id,
+		}),
+		trpc.integration.syncAllowed.query({ organizationId: organization.id }),
+	]);
 	const isConnected = !!installation;
 
 	return (
@@ -180,6 +188,7 @@ export default async function GitHubIntegrationPage() {
 					<ConnectionControls
 						organizationId={organization.id}
 						isConnected={isConnected}
+						syncAllowed={syncAllowed}
 					/>
 					{installation && (
 						<div className="mt-4 text-sm text-muted-foreground">

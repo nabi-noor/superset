@@ -44,6 +44,27 @@ export default async function LinearIntegrationPage() {
 				message: "You are not authorized to perform this action.",
 			}),
 		),
+		plan_required: i18n._(
+			msg({
+				message: "Linear sync requires the Pro plan.",
+			}),
+		),
+		workspace_already_linked: {
+			param: "owner",
+			withParam: i18n._({
+				...msg({
+					message:
+						"This Linear workspace is already connected by {owner}. Ask them to disconnect first.",
+				}),
+				values: { owner: "{owner}" },
+			}),
+			withoutParam: i18n._(
+				msg({
+					message:
+						"This Linear workspace is already connected by another Superset organization.",
+				}),
+			),
+		},
 	};
 	const CALLBACK_WARNINGS = {
 		sync_queued_failed: i18n._(
@@ -72,11 +93,14 @@ export default async function LinearIntegrationPage() {
 		);
 	}
 
-	const connection = await trpc.integration.linear.getConnection.query({
-		organizationId: organization.id,
-	});
-	const isConnected = !!connection;
+	const [connection, syncAllowed] = await Promise.all([
+		trpc.integration.linear.getConnection.query({
+			organizationId: organization.id,
+		}),
+		trpc.integration.syncAllowed.query({ organizationId: organization.id }),
+	]);
 	const needsReconnect = !!connection?.needsReconnect;
+	const isConnected = !!connection && (syncAllowed || !needsReconnect);
 
 	return (
 		<div className="space-y-8">
@@ -105,7 +129,7 @@ export default async function LinearIntegrationPage() {
 				<div className="flex-1">
 					<div className="flex items-center gap-3">
 						<h1 className="text-2xl font-semibold">Linear</h1>
-						{needsReconnect ? (
+						{isConnected && needsReconnect ? (
 							<Badge variant="destructive" className="gap-1">
 								<AlertTriangle className="size-3" />
 								{i18n._(
@@ -167,11 +191,12 @@ export default async function LinearIntegrationPage() {
 						organizationId={organization.id}
 						isConnected={isConnected}
 						needsReconnect={needsReconnect}
+						syncAllowed={syncAllowed}
 					/>
 				</CardContent>
 			</Card>
 
-			{connection && (
+			{isConnected && (
 				<Card>
 					<CardHeader>
 						<CardTitle>

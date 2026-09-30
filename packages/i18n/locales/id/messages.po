@@ -8735,6 +8735,9 @@ msgstr "Linear terhubung, tapi sinkronisasi awal gagal dimulai. Silakan coba hub
 msgid "Linear integration"
 msgstr "Integrasi Linear"
 
+msgid "Linear sync requires the Pro plan."
+msgstr "Sinkronisasi Linear memerlukan paket Pro."
+
 #. placeholder {0}: m.startLine
 #. placeholder {0}: metadata.startLine
 #. placeholder {1}: m.endLine
@@ -16058,6 +16061,12 @@ msgstr "Ini lebih lama dari biasanya. Workspace-nya mungkin sudah siap — memua
 msgid "This issue link is invalid."
 msgstr "Tautan issue ini tidak valid."
 
+msgid "This Linear workspace is already connected by {owner}. Ask them to disconnect first."
+msgstr "Workspace Linear ini sudah terhubung oleh {owner}. Minta mereka memutuskannya dulu."
+
+msgid "This Linear workspace is already connected by another Superset organization."
+msgstr "Workspace Linear ini sudah terhubung oleh organisasi Superset lain."
+
 msgid "This looks like a binary file. Opening it as text may show garbled output or freeze the editor for large files."
 msgstr "Ini tampak seperti file biner. Membukanya sebagai teks bisa menampilkan output kacau atau membekukan editor untuk file besar."
 
@@ -16889,6 +16898,12 @@ msgstr "Upgrade ke {0}"
 
 msgid "Upgrade to Pro"
 msgstr "Upgrade ke Pro"
+
+msgid "Upgrade to Pro to connect GitHub"
+msgstr "Upgrade ke Pro untuk menghubungkan GitHub"
+
+msgid "Upgrade to Pro to connect Linear"
+msgstr "Upgrade ke Pro untuk menghubungkan Linear"
 
 msgid "Upload files"
 msgstr "Unggah file"

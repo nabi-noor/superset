@@ -8735,6 +8735,9 @@ msgstr "Linearは接続しましたが、初回同期を開始できませんで
 msgid "Linear integration"
 msgstr "Linear連携"
 
+msgid "Linear sync requires the Pro plan."
+msgstr "Linearの同期にはProプランが必要です。"
+
 #. placeholder {0}: m.startLine
 #. placeholder {0}: metadata.startLine
 #. placeholder {1}: m.endLine
@@ -16058,6 +16061,12 @@ msgstr "通常より時間がかかっています。ワークスペースはす
 msgid "This issue link is invalid."
 msgstr "このissueリンクは無効です。"
 
+msgid "This Linear workspace is already connected by {owner}. Ask them to disconnect first."
+msgstr "このLinearワークスペースは{owner}がすでに接続しています。先に接続を解除してもらってください。"
+
+msgid "This Linear workspace is already connected by another Superset organization."
+msgstr "このLinearワークスペースは別のSuperset組織がすでに接続しています。"
+
 msgid "This looks like a binary file. Opening it as text may show garbled output or freeze the editor for large files."
 msgstr "バイナリファイルのようです。テキストとして開くと文字化けしたり、大きなファイルではエディタが固まる可能性があります。"
 
@@ -16889,6 +16898,12 @@ msgstr "{0}にアップグレード"
 
 msgid "Upgrade to Pro"
 msgstr "Pro にアップグレード"
+
+msgid "Upgrade to Pro to connect GitHub"
+msgstr "Pro にアップグレードして GitHub を接続"
+
+msgid "Upgrade to Pro to connect Linear"
+msgstr "Pro にアップグレードして Linear を接続"
 
 msgid "Upload files"
 msgstr "ファイルをアップロード"
