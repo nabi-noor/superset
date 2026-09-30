@@ -366,6 +366,37 @@ describe("LocalLinkDetector", () => {
 			expect(result[0]?.resolvedPath).toBe(spacedPath);
 		});
 
+		it("prefers the longer path when the shorter one is the only parsed piece", async () => {
+			// The parser returns only `/tmp/my` here: `file` alone is not a path
+			// candidate, so no parsed piece is left unresolved.
+			const detector = createDetector(["/tmp/my", "/tmp/my file"]);
+			const result = await detector.detect("Saved: /tmp/my file");
+			expect(result).toHaveLength(1);
+			expect(result[0]?.resolvedPath).toBe("/tmp/my file");
+			expect(result[0]?.text).toBe("/tmp/my file");
+		});
+
+		it("keeps the shorter path when the longer one does not exist", async () => {
+			const detector = createDetector(["/tmp/my"]);
+			const result = await detector.detect("Saved: /tmp/my file");
+			expect(result).toHaveLength(1);
+			expect(result[0]?.resolvedPath).toBe("/tmp/my");
+			expect(result[0]?.text).toBe("/tmp/my");
+		});
+
+		it("does not look for a longer path when a link ends the line", async () => {
+			let calls = 0;
+			const resolver = new TerminalLinkResolver(async (path) => {
+				calls++;
+				return path === "/tmp/plain.md" ? { isDirectory: false } : null;
+			});
+			const detector = new LocalLinkDetector(resolver);
+			const result = await detector.detect("Saved: /tmp/plain.md");
+			expect(result).toHaveLength(1);
+			// One stat for the parsed path; nothing for the spaced-path pass.
+			expect(calls).toBe(1);
+		});
+
 		it("does not replace a fallback match that carries a line number", async () => {
 			const detector = createDetector(["/tmp/link test/app.py"]);
 			const result = await detector.detect(

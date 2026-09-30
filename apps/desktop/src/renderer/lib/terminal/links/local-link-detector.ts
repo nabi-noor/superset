@@ -32,6 +32,11 @@ const MAX_SPACED_PATH_STAT_CALLS = 40;
 // inside a word or after `:` (as in a URL) is not a start.
 const SPACED_PATH_START = /(?<=^|[\s"'`([<=])(?:file:\/\/|~\/|\.{1,2}\/|\/)/g;
 
+/** Whether a single space and another word follow the link on the same line. */
+function isFollowedByWord(text: string, link: DetectedLink): boolean {
+	return /^ \S/.test(text.slice(link.endIndex, link.endIndex + 2));
+}
+
 /**
  * A detected and validated local file link.
  */
@@ -171,9 +176,16 @@ export class LocalLinkDetector {
 
 		// SUPERSET ADDITION: paths that contain spaces. The shared parser ends a
 		// path at whitespace, so `/tmp/link test/example.md` is split into pieces
-		// that don't exist. Only worth trying when a piece failed to resolve or
-		// nothing was found.
-		if (hasUnresolvedPiece || links.length === 0) {
+		// that don't exist. Worth trying when a piece failed to resolve, when
+		// nothing was found, or when a resolved link is followed by another word,
+		// since `/tmp/my file` parses as `/tmp/my` alone and that may exist too.
+		if (
+			hasUnresolvedPiece ||
+			links.length === 0 ||
+			links.some(
+				(link) => primaryLinks.has(link) && isFollowedByWord(text, link),
+			)
+		) {
 			await this._detectPathsWithSpaces(text, links, primaryLinks);
 		}
 
